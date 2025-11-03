@@ -13,7 +13,6 @@ services:
       - db_data:/var/lib/mysql
     networks:
       - backend-network
-    # --- BLOCO ATUALIZADO ---
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--port=3306", "-u", "user", "-puserpass"]
       interval: 10s
@@ -26,9 +25,12 @@ services:
     container_name: api_backend
     depends_on:
       db:
-        condition: service_healthy # Isso agora vai funcionar
-    environment:
-      DB_HOST: db
+        condition: service_healthy 
+    
+    env_file: ./backend/.env  
+
+    environment:  
+      DB_HOST: db 
       DB_USER: user
       DB_PASSWORD: userpass
       DB_NAME: loja

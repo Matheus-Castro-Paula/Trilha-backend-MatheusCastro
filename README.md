@@ -1,22 +1,24 @@
-# Trilha de Backend — Desafio Comp Júnior (Semana 1 e 2)
+# Projeto Loja - Trilha Backend (Semana 3)
 
-## Descrição
-Este repositório contém as entregas referentes às **semanas 1 e 2** do desafio de backend da **Comp Júnior**.  
-O foco desta etapa é a criação do **banco de dados relacional** e sua **containerização com Docker**.
+Este projeto é um backend de e-commerce (API RESTful) para um processo seletivo, construído com Node.js, Express, Sequelize e MySQL, e totalmente containerizado com Docker.
+
+Esta versão implementa o sistema completo de autenticação da **Semana 3**, incluindo registro de usuários, login com JSON Web Tokens (JWT) e recuperação de senha por e-mail (via Mailtrap).
 
 ---
 
 ## Tecnologias Utilizadas
 
-* **Backend:** Node.js
-* **Framework:** Express
-* **ORM:** Sequelize
-* **Banco de Dados:** MySQL 8.0
-* **Containerização:** Docker & Docker Compose
+* **Backend:** Node.js, Express.js
+* **Banco de Dados:** MySQL (via Sequelize ORM)
+* **Containerização:** Docker, Docker Compose
+* **Autenticação:** JSON Web Tokens (JWT), bcrypt.js
+* **Serviço de E-mail:** Nodemailer (com Mailtrap.io para testes)
 
 ---
 
-## Estrutura do Projeto
+## 📂 Estrutura de Pastas
+
+A arquitetura principal do backend está organizada da seguinte forma:
 
 ```text
 projeto-matheus_castro-trilha-backend/
@@ -24,10 +26,14 @@ projeto-matheus_castro-trilha-backend/
 |   ├── config/
 |   |   ├──config.js  # Configuração do Sequelize
 |   |
+|   ├── controllers/
+|   |   ├──authController.js
+|   |
 |   ├── migrations/   # Migrações do banco (criar tabelas)
 |   |   ├── 20251025-1-create-clientes.js 
 |   |   ├── 20251025-2-create-compras.js
 |   |   ├── 20251025-3-create-produtos.js
+|   |   ├── 20251101-1-create-users.js
 |   |   #
 |   |   # ##Esses aquivos contém uma numeração (além da data) pois é 
 |   |   #   necessária para serem executados na ordem certa 
@@ -37,10 +43,19 @@ projeto-matheus_castro-trilha-backend/
 |   |   ├── compra.js
 |   |   ├── index.js
 |   |   ├── produto.js
+|   |   ├── user.js
 |   |
 |   ├── node_modules/ # (Ignorado pelo .gitignore)
 |   |
+|   ├── routes/
+|   |   ├── auth.js
+|   |
+|   ├── utils/
+|   |   ├── email.js
+|   |
+|   ├── .env # (Ignorado pelo .gitignore)
 |   ├── .env.example  # Exemplo de variáveis de ambiente
+|   ├── .gitignore
 |   ├── .sequelizerc
 |   ├── Dockerfile   # Receita para construir o container do backend
 |   ├── package-lock.json
@@ -54,34 +69,14 @@ projeto-matheus_castro-trilha-backend/
 
 ---
 
-## Banco de Dados
-- Banco: **MySQL**
-- Nome do banco: `loja`
-- Entidades:
-  - **clientes** → informações do cliente  
-  - **produtos** → dados de produtos disponíveis  
-  - **compras** → compra efetuada pelo cliente
+## Como Rodar o Projeto (Para o Supervisor)
 
-O script `init.sql` cria automaticamente as três tabelas e define as chaves estrangeiras.
+**Pré-requisitos:**
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado e rodando.
+* Um cliente de API (como [Postman](https://www.postman.com/downloads/) ou [Insomnia](https://insomnia.rest/download)).
+* Credenciais de um SMTP de teste (ex: [Mailtrap.io](https://mailtrap.io/)).
 
----
-
-## Pré-requisitos
-
-Certifique-se de ter o **Docker**, o **Docker Compose** e o **Git** instalados.
-   ```bash
-   docker -v
-   docker compose version
-   git -v
-   ```
----
-
-## Como rodar o projeto:
-
-Siga os passos abaixo para executar a aplicação:
-
-**1. Clone o Repositório**
+**Passo 1: Clonar o Repositório**
 ```bash
-git clone [URL_DO_SEU_REPOSITÓRIO_GIT]
+git clone [URL_DO_SEU_REPOSITORIO_AQUI]
 cd projeto-matheus_castro-trilha-backend
-docker compose up --build
