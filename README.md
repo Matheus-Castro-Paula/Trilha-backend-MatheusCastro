@@ -16,7 +16,7 @@ Esta versão implementa o sistema completo de autenticação da **Semana 3**, in
 
 ---
 
-## 📂 Estrutura de Pastas
+## Estrutura de Pastas
 
 A arquitetura principal do backend está organizada da seguinte forma:
 
