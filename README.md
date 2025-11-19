@@ -10,9 +10,9 @@ O sistema foi construído com foco em escalabilidade, segurança e integridade d
 
 ## Status e Evolução do Projeto
 
-**Semanas 1-2 (Fundação):** Configuração do ambiente, containerização com Docker e modelagem do Banco de Dados (Migrations e Models).
-**Semana 3 (Segurança):** Implementação de Autenticação JWT, Criptografia de senhas (Bcrypt) e Recuperação de senha por e-mail.
-**Semanas 4-5 (Regras de Negócio):** Desenvolvimento do CRUD completo de Produtos, Clientes e Compras, com controle de acesso (Middleware de Admin vs Usuário).
+* **Semanas 1-2 (Fundação):** Configuração do ambiente, containerização com Docker e modelagem do Banco de Dados (Migrations e Models).
+* **Semana 3 (Segurança):** Implementação de Autenticação JWT, Criptografia de senhas (Bcrypt) e Recuperação de senha por e-mail.
+* **Semanas 4-5 (Regras de Negócio):** Desenvolvimento do CRUD completo de Produtos, Clientes e Compras, com controle de acesso (Middleware de Admin vs Usuário).
 
 ---
 
