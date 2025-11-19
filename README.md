@@ -18,7 +18,6 @@ Este projeto é um backend de e-commerce (API RESTful) desenvolvido como parte d
 
 ---
 
-<<<<<<< HEAD
 ## Modelagem de Dados (Semanas 1-2)
 
 O banco de dados foi estruturado para atender aos requisitos de um e-commerce. As seguintes entidades já estão mapeadas e operacionais no banco:
@@ -30,8 +29,6 @@ O banco de dados foi estruturado para atender aos requisitos de um e-commerce. A
 
 ---
 
-=======
->>>>>>> 245cd832f385d9c09b1cd96e99aba84a5b12abcd
 ## Estrutura de Pastas
 
 A arquitetura principal do backend está organizada da seguinte forma:
