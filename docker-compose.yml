@@ -14,7 +14,6 @@ services:
     networks:
       - backend-network
     healthcheck:
-      # Alteração: Adicionei usuário e senha no ping para garantir que funcione
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpass"]
       interval: 10s
       timeout: 10s
