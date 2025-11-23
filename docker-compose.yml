@@ -14,11 +14,12 @@ services:
     networks:
       - backend-network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      # Alteração: Adicionei usuário e senha no ping para garantir que funcione
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpass"]
       interval: 10s
       timeout: 10s
       retries: 20       
-      start_period: 120s 
+      start_period: 30s 
 
   backend:
     build: ./backend
@@ -26,9 +27,7 @@ services:
     depends_on:
       db:
         condition: service_healthy 
-    
     env_file: ./backend/.env  
-
     environment:  
       DB_HOST: db 
       DB_USER: user
