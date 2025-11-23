@@ -2,9 +2,9 @@
 
 ## API de E-commerce
 
-Este projeto é uma API RESTful robusta para gerenciamento de uma loja virtual, desenvolvida como parte do processo seletivo de trainee da **Comp Júnior**.
+Este repositório contém o backend de uma loja virtual, desenvolvido como desafio final da trilha de capacitação do processo seletivo da **Comp Júnior**.
 
-O sistema foi construído com foco em escalabilidade, segurança e integridade de dados, utilizando **Node.js**, **Docker** e Banco de Dados Relacional (**MySQL**).
+O objetivo do projeto foi criar uma API funcional que simula um cenário real de e-commerce, aplicando conceitos de **Docker** para containerização, **MySQL** para persistência de dados e **Node.js** para a construção das rotas e regras de negócio.
 
 ---
 
@@ -13,6 +13,7 @@ O sistema foi construído com foco em escalabilidade, segurança e integridade d
 * **Semanas 1-2 (Fundação):** Configuração do ambiente, containerização com Docker e modelagem do Banco de Dados (Migrations e Models).
 * **Semana 3 (Segurança):** Implementação de Autenticação JWT, Criptografia de senhas (Bcrypt) e Recuperação de senha por e-mail.
 * **Semanas 4-5 (Regras de Negócio):** Desenvolvimento do CRUD completo de Produtos, Clientes e Compras, com controle de acesso (Middleware de Admin vs Usuário).
+* **Semana 6 e Entrega Final:** Documentação de todo o projeto, atualizações e conclusão do README.md. 
 
 ---
 
@@ -24,6 +25,17 @@ O sistema foi construído com foco em escalabilidade, segurança e integridade d
 * **Infraestrutura:** Docker & Docker Compose
 * **Segurança:** JSON Web Tokens (JWT) & bcrypt.js
 * **E-mail:** Nodemailer (SMTP via Mailtrap)
+
+---
+
+## Decisões e Justificativas Técnicas
+
+As tecnologias foram selecionadas para alinhar os **requisitos obrigatórios do desafio** com as melhores práticas de desenvolvimento:
+
+* **Docker:** A containerização **foi um requisito do desafio**, mas também foi fundamental para garantir que o avaliador consiga rodar o projeto (Banco + API) com um único comando, sem problemas de compatibilidade de ambiente.
+* **JWT (JSON Web Tokens):** Implementado conforme **solicitado na proposta** para gerenciar a autenticação. É a solução ideal para garantir a segurança dos dois níveis de acesso (Admin e Usuário) sem manter estado no servidor.
+* **MySQL & Sequelize:** Como o documento **exigia um banco de dados relacional** persistente, optei pelo MySQL gerenciado pelo ORM Sequelize. Isso facilitou a criação das relações complexas (Clientes, Produtos, Compras) e a manutenção do histórico de tabelas via *Migrations*.
+* **Node.js & Express:** Escolhidos para cumprir o objetivo de entregar uma API performática e completa dentro do prazo, aproveitando a vasta documentação e comunidade dessas ferramentas.
 
 ---
 
@@ -63,8 +75,8 @@ projeto-matheus_castro-trilha-backend/
 |   |   ├── 20251025-3-create-produtos.js
 |   |   └── 20251101-1-create-users.js
 |   |   #
-|   |   # ##Esses aquivos contém uma numeração (além da data) pois é 
-|   |   #   necessária para serem executados na ordem certa 
+|   |   # ## Esses arquivos contêm uma numeração (além da data) pois é 
+|   |   #    necessária para serem executados na ordem certa 
 |   |
 |   ├── models/   # Modelos do Sequelize (cliente, compra, etc.)
 |   |   ├── cliente.js
@@ -175,3 +187,9 @@ Utilize o Postman ou Insomnia. Para rotas que exigem autenticação (Auth = Sim)
 | :--- | :--- | :--- | :--- | :--- |
 | `POST` | `/api/compras` | Sim (Token) | `{"cliente_id": 1, "produto_id": 1, "quantidade_comprada": 2}` | Registra uma compra. |
 | `GET` | `/api/compras` | Sim (Token) | - | Lista histórico detalhado. |
+
+---
+
+## Autor
+
+Desenvolvido por **Matheus de Castro Paula** como parte do processo seletivo da Comp Júnior.

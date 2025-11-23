@@ -11,21 +11,21 @@ exports.register = async (req, res) => {
   const t = await sequelize.transaction();
 
   try {
-    // 1. Verifica se o e-mail (User) já existe
+    // Verifica se o e-mail já existe
     const userExists = await User.findOne({ where: { email: email_login } });
     if (userExists) {
       await t.rollback();
       return res.status(400).json({ error: 'Este e-mail de login já está em uso.' });
     }
 
-    // 2. Cria o Cliente
+    // Cria o Cliente
     const novoCliente = await Cliente.create({
       nome: nome_cliente,
       email: req.body.email_cliente || email_login, // Use um email de cliente ou o de login
       stats: 'ativo'
     }, { transaction: t });
 
-    // 3. Cria o User, ligando-o ao Cliente
+    // Cria o User, ligando-o ao Cliente
     const novoUser = await User.create({
       email: email_login,
       password: password,
@@ -67,7 +67,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ error: 'Credenciais inválidas.' });
     }
 
-    // 3. Gera o Token JWT
+    // Gera o Token JWT
     const payload = {
       id: user.id,
       role: user.role
