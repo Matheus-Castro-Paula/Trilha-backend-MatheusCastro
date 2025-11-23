@@ -159,34 +159,34 @@ Para validar o requisito de dois níveis de acesso, utilize os seguintes usuári
 
 ## Documentação dos Endpoints (API)
 
-Utilize o Postman ou Insomnia. Para rotas que exigem autenticação (Auth = Sim), envie o header: `Authorization: Bearer <SEU_TOKEN_AQUI>`.
+Utilize o Postman ou Insomnia. Importante: Para rotas com Auth = Sim, copie o Token gerado no Login e cole na aba Authorization -> Bearer Token.
 
-### 1. Autenticação (Semana 3)
-| Método | Rota | Auth | Body (JSON) | Descrição |
-| :--- | :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/register` | Não | `{"nome_cliente": "Nome", "email_login": "teste@email.com", "password": "123"}` | Cria novo usuário. |
-| `POST` | `/api/auth/login` | Não | `{"email": "teste@email.com", "password": "123"}` | Gera o Token JWT. |
-| `POST` | `/api/auth/forgot` | Não | `{"email": "teste@email.com"}` | Envia e-mail de recuperação. |
+### 1. Autenticação (Obter Token)
+| Método | URL Completa | Auth | Body (JSON) |
+| :--- | :--- | :--- | :--- |
+| `POST` | `http://localhost:3000/api/auth/login` | Não | `{"email": "admin@loja.com", "password": "admin123"}` |
+| `POST` | `http://localhost:3000/api/auth/register` | Não | `{"nome_cliente": "Teste", "email_login": "novo@email.com", "password": "123"}` |
+| `POST` | `http://localhost:3000/api/auth/forgot` | Não | `{"email": "admin@loja.com"}` |
 
-### 2. Produtos (Semana 4 e 5)
-| Método | Rota | Auth | Body (JSON) | Descrição |
-| :--- | :--- | :--- | :--- | :--- |
-| `GET` | `/api/produtos` | Não | - | Lista todos os produtos. |
-| `POST` | `/api/produtos` | Sim (Admin) | `{"nome_produto": "PC Gamer", "valor_produto": 5000.00, "quantidade_estoque": 10}` | Cadastra produto. |
-| `PUT` | `/api/produtos/:id` | Sim (Admin) | `{"nome_produto": "PC Gamer Editado", "valor_produto": 4500.00, "quantidade_estoque": 5}` | Atualiza produto. |
-| `DELETE`| `/api/produtos/:id` | Sim (Admin) | - | Remove produto. |
+### 2. Produtos (Gestão da Loja)
+| Método | URL Completa | Auth | Body (JSON) |
+| :--- | :--- | :--- | :--- |
+| `GET` | `http://localhost:3000/api/produtos` | Não | - |
+| `POST` | `http://localhost:3000/api/produtos` | Sim (Admin) | `{"nome_produto": "PC Gamer", "valor_produto": 5000.00, "quantidade_estoque": 10}` |
+| `PUT` | `http://localhost:3000/api/produtos/1` | Sim (Admin) | `{"nome_produto": "PC Gamer Editado", "valor_produto": 4500.00, "quantidade_estoque": 5}` |
+| `DELETE`| `http://localhost:3000/api/produtos/1` | Sim (Admin) | - |
 
-### 3. Clientes (Semana 4 e 5)
-| Método | Rota | Auth | Body (JSON) | Descrição |
-| :--- | :--- | :--- | :--- | :--- |
-| `GET` | `/api/clientes` | Sim (Admin) | - | Lista todos os clientes. |
-| `POST` | `/api/clientes` | Sim (Admin) | `{"nome": "Cliente Vip", "email": "vip@loja.com", "stats": "ativo"}` | Cria cliente manualmente. |
+### 3. Clientes
+| Método | URL Completa | Auth | Body (JSON) |
+| :--- | :--- | :--- | :--- |
+| `GET` | `http://localhost:3000/api/clientes` | Sim (Admin) | - |
+| `POST` | `http://localhost:3000/api/clientes` | Sim (Admin) | `{"nome": "Cliente VIP", "email": "vip@cliente.com", "stats": "ativo"}` |
 
-### 4. Compras (Semana 4 e 5)
-| Método | Rota | Auth | Body (JSON) | Descrição |
-| :--- | :--- | :--- | :--- | :--- |
-| `POST` | `/api/compras` | Sim (Token) | `{"cliente_id": 1, "produto_id": 1, "quantidade_comprada": 2}` | Registra uma compra. |
-| `GET` | `/api/compras` | Sim (Token) | - | Lista histórico detalhado. |
+### 4. Compras
+| Método | URL Completa | Auth | Body (JSON) |
+| :--- | :--- | :--- | :--- |
+| `POST` | `http://localhost:3000/api/compras` | Sim (Token) | `{"cliente_id": 1, "produto_id": 1, "quantidade_comprada": 1}` |
+| `GET` | `http://localhost:3000/api/compras` | Sim (Token) | - |
 
 ---
 
